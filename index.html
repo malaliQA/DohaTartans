@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="DohaTartans: four Carnegie Mellon Qatar students building AI agents, LLM apps and full stack products.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>DohaTartans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a maroon tartan band with the team name, then a single reading column of members, builds and the idea, closed by a plate-style footer. */
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --ink:#16181D; --muted:#5B606B; --line:#DADDE3;
+  --maroon:#8A1538; --maroon-ink:#FFFFFF; --plate:#1C4E9C; --chip:#F2E6EA;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111317; --surface:#181B21; --ink:#ECEEF2; --muted:#9AA0AB; --line:#2A2E36;
+  --maroon:#B23A5C; --maroon-ink:#FFFFFF; --plate:#4F7FCF; --chip:#2A1A20; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111317; --surface:#181B21; --ink:#ECEEF2; --muted:#9AA0AB; --line:#2A2E36;
+  --maroon:#B23A5C; --maroon-ink:#FFFFFF; --plate:#4F7FCF; --chip:#2A1A20; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:inherit}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Hero band: maroon with a faint tartan weave and the flag's serrated edge */
+.hero{position:relative;background:var(--maroon);color:var(--maroon-ink);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.13;pointer-events:none;
+  background:
+   repeating-linear-gradient(90deg,transparent 0 22px,#fff 22px 24px,transparent 24px 30px,#fff 30px 31px,transparent 31px 64px),
+   repeating-linear-gradient(0deg,transparent 0 22px,#fff 22px 24px,transparent 24px 30px,#fff 30px 31px,transparent 31px 64px)}
+.hero .wrap{position:relative;padding-block:56px 64px;display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,10vw,92px);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lede{max-width:58ch;font-size:18px;margin:0;opacity:.95}
+.serration{display:block;width:100%;height:18px;color:var(--bg)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.fact{font-family:var(--mono);font-size:13px;border:1px solid rgba(255,255,255,.45);padding:5px 10px;border-radius:3px}
+
+section{padding-block:44px 8px}
+h2{font-family:var(--display);font-weight:700;font-size:28px;margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 22px;max-width:62ch}
+
+/* Members */
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.member{background:var(--surface);border:1px solid var(--line);padding:18px;display:grid;gap:6px;align-content:start;min-width:0}
+.member .name{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2}
+.member .role{font-size:14px;color:var(--muted)}
+.member .gh{font-family:var(--mono);font-size:13px;color:var(--plate);text-decoration:none;margin-top:4px}
+.member .gh:hover,.member .gh:focus-visible{text-decoration:underline}
+.member.open{background:transparent;border-style:dashed}
+.member.open .name{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-family:var(--mono);font-size:11.5px;background:var(--chip);color:var(--ink);padding:2px 7px;border-radius:2px}
+
+/* Builds */
+.builds{display:grid;gap:0;border-top:1px solid var(--line)}
+.build{display:grid;grid-template-columns:150px 1fr;gap:20px;padding-block:22px;border-bottom:1px solid var(--line)}
+.build .kind{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--maroon);padding-top:4px}
+.build h3{font-family:var(--display);font-weight:700;font-size:20px;margin:0 0 6px}
+.build p{margin:0 0 8px;max-width:62ch;min-width:0}
+.build .meta{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.build a.repo{font-family:var(--mono);font-size:13px;color:var(--plate);text-decoration:none;word-break:break-all}
+.build a.repo:hover,.build a.repo:focus-visible{text-decoration:underline}
+@media (max-width:560px){.build{grid-template-columns:1fr;gap:6px}}
+
+/* Idea */
+.idea{background:var(--surface);border:1px solid var(--line);padding:24px;display:grid;gap:14px}
+.idea p{margin:0;max-width:62ch}
+.plate{display:inline-grid;grid-template-columns:repeat(3,auto);gap:0;border:2px solid var(--plate);border-radius:6px;overflow:hidden;font-family:var(--mono);width:max-content;max-width:100%}
+.plate div{padding:8px 14px;text-align:center;border-right:2px solid var(--plate)}
+.plate div:last-child{border-right:0}
+.plate b{display:block;font-size:22px;font-weight:500;color:var(--plate);font-variant-numeric:tabular-nums}
+.plate span{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+footer{margin-top:52px;border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+:focus-visible{outline:2px solid var(--plate);outline-offset:2px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Team of four · CMU-Q · Education City, Doha</div>
+    <h1>DohaTartans</h1>
+    <p class="lede">Four Carnegie Mellon Qatar students who would rather ship a working demo than a beautiful slide deck. We cover the full path from open model to working product.</p>
+    <div class="facts">
+      <span class="fact">AI / ML</span><span class="fact">LLMs &amp; agents</span><span class="fact">Software engineering</span><span class="fact">Data science</span><span class="fact">Research</span>
+    </div>
+  </div>
+  <svg class="serration" viewBox="0 0 900 18" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" d="M0 18 L0 9 L50 0 L100 9 L150 0 L200 9 L250 0 L300 9 L350 0 L400 9 L450 0 L500 9 L550 0 L600 9 L650 0 L700 9 L750 0 L800 9 L850 0 L900 9 L900 18 Z"/>
+  </svg>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="team-h">
+    <h2 id="team-h">The team</h2>
+    <p class="sub">Four students at Carnegie Mellon University in Qatar. Two full stack builders, two Python and model people, and all four comfortable with LLMs.</p>
+    <div class="members">
+      <article class="member">
+        <div class="name">Mohammed</div>
+        <div class="role">Team lead · Information Systems, Data Science concentration</div>
+        <div class="tags"><span class="tag">Full stack</span><span class="tag">LLMs</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">TypeScript</span></div>
+        <a class="gh" href="https://github.com/malaliQA" target="_blank" rel="noopener">github.com/malaliQA</a>
+      </article>
+      <article class="member">
+        <div class="name">Rashid Al-Kubaisi</div>
+        <div class="role">Full stack and LLM builder</div>
+        <div class="tags"><span class="tag">Full stack</span><span class="tag">LLMs</span><span class="tag">Rails</span></div>
+      </article>
+      <article class="member">
+        <div class="name">Saad Al-Kuwari</div>
+        <div class="role">Python and language models</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">LLMs</span></div>
+      </article>
+      <article class="member">
+        <div class="name">Ali Al-Ajji</div>
+        <div class="role">Python developer</div>
+        <div class="tags"><span class="tag">Python</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="builds-h">
+    <h2 id="builds-h">What we have built</h2>
+    <p class="sub">Course projects, research and internship work, across AI agents, LLMs, full stack apps and data science.</p>
+    <div class="builds">
+      <article class="build">
+        <div class="kind">AI agent · Mohammed</div>
+        <div>
+          <h3>WinGit on OpenCode</h3>
+          <p>Mohammed's five-person 17-313 team extending OpenCode, the open-source AI coding agent. His group built context window and token usage visibility: a /context command, a live usage meter and a cost display, shipped through issues, reviewed PRs and a team project board.</p>
+          <div class="meta">TypeScript · Bun · 99 commits · PR review workflow</div>
+          <a class="repo" href="https://github.com/CMU-17313Q/opencode-f26-WinGit" target="_blank" rel="noopener">github.com/CMU-17313Q/opencode-f26-WinGit</a>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">AI agent · Rashid</div>
+        <div>
+          <h3>Four_Loop on OpenCode</h3>
+          <p>Rashid's 17-313 team, working in parallel with WinGit on the same open-source AI coding agent. A TypeScript monorepo on Bun with build and plan agents, CI typecheck, unit tests and coverage reporting.</p>
+          <div class="meta">TypeScript · Bun · Node 24 · CI · test coverage</div>
+          <a class="repo" href="https://github.com/CMU-17313Q/opencode-f26-Four_Loop" target="_blank" rel="noopener">github.com/CMU-17313Q/opencode-f26-Four_Loop</a>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">TypeScript · Individual</div>
+        <div>
+          <h3>Software engineering labs</h3>
+          <p>Individual 17-313 work in TypeScript: a personal fork of OpenCode, a GitHub workflow recitation, a homework lab and a basic web app.</p>
+          <div class="meta">TypeScript · Git · testing · 6 public repos</div>
+          <a class="repo" href="https://github.com/malaliQA" target="_blank" rel="noopener">github.com/malaliQA</a>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">Web app · Rashid</div>
+        <div>
+          <h3>Phase 4 Rails application</h3>
+          <p>A full Ruby on Rails application for 67-272 Application Design and Development, built across four phases: data model, controllers, authentication, authorization and a tested MVC stack.</p>
+          <div class="meta">Ruby on Rails · Active Record · auth</div>
+          <a class="repo" href="https://github.com/S26-67272Qatar/phase04-ralkubai-1" target="_blank" rel="noopener">github.com/S26-67272Qatar/phase04-ralkubai-1</a>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">LLM oversight · Research</div>
+        <div>
+          <h3>Ethical supply chain scheduling agent</h3>
+          <p>A scheduling system with an LLM oversight agent (GPT-4.1-mini) that checks plans against ethical constraints before they go out. Built for 67-341 Generative AI &amp; Governance and presented at Meeting of the Minds.</p>
+          <div class="meta">Python · GPT-4.1-mini · agent oversight</div>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">LLMs · Research</div>
+        <div>
+          <h3>Can an LLM call implied volatility?</h3>
+          <p>A capstone study testing whether large language models can predict the direction of implied volatility, alongside a neural network vs Black-Scholes option pricing residual study.</p>
+          <div class="meta">Python · options data · evaluation design</div>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">ML · Course</div>
+        <div>
+          <h3>World Values Survey classifier</h3>
+          <p>An end-to-end machine learning pipeline on World Values Survey data, from cleaning to a logistic regression model at AUC 0.713.</p>
+          <div class="meta">Python · scikit-learn · AUC 0.713</div>
+        </div>
+      </article>
+      <article class="build">
+        <div class="kind">Automation · Internship</div>
+        <div>
+          <h3>Teach For Qatar data pipeline</h3>
+          <p>A Selenium and Google Apps Script pipeline that took manual monitoring and evaluation data entry off the team's plate.</p>
+          <div class="meta">Selenium · Apps Script · data management</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="idea-h">
+    <h2 id="idea-h">What we want to build next</h2>
+    <div class="idea">
+      <p>An agent that turns how people actually describe a place in Qatar, "behind the Lulu, the villa with the green gate", into the blue plate address emergency services can dispatch to, and asks the one follow-up question that closes the gap when it cannot.</p>
+      <p>Built entirely on open models from Hugging Face: Whisper for Arabic and English speech, a small open LLM for reasoning, and a Gradio Space for the live demo.</p>
+      <div class="plate" aria-label="Example Qatar address plate">
+        <div><b>69</b><span>Zone</span></div>
+        <div><b>840</b><span>Street</span></div>
+        <div><b>12</b><span>Building</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>DohaTartans · Carnegie Mellon University in Qatar</span>
+    <span>© 2026 DohaTartans · Mohammed, Rashid, Saad and Ali</span>
+  </div>
+</footer>
+</body>
+</html>
